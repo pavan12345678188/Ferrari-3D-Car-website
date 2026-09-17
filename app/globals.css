@@ -1,0 +1,2828 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+/* =========================================================
+   ALVANTIX AUTOHUB
+   GLOBAL DESIGN SYSTEM
+========================================================= */
+
+:root {
+  --bg: #050505;
+  --bg-soft: #090909;
+  --panel: rgba(10, 10, 10, 0.94);
+
+  --text: #f5f5f5;
+  --text-soft: #d0d0d0;
+  --muted: #858585;
+  --muted-dark: #555;
+
+  --line: rgba(255, 255, 255, 0.11);
+  --line-strong: rgba(255, 255, 255, 0.2);
+
+  --white: #ffffff;
+  --black: #050505;
+
+  --header-height: 78px;
+  --footer-height: 58px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color-scheme: dark;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+
+img,
+canvas,
+svg {
+  display: block;
+}
+
+canvas {
+  max-width: 100%;
+}
+
+/* =========================================================
+   MAIN APPLICATION
+========================================================= */
+
+.autohub {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  height: 100svh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 58% 48%,
+      rgba(255, 255, 255, 0.055),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(100, 120, 150, 0.08),
+      transparent 28%
+    ),
+    #050505;
+}
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+.grain {
+  position: absolute;
+  inset: 0;
+
+  z-index: 50;
+
+  pointer-events: none;
+
+  opacity: 0.045;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   TOP NAVIGATION
+========================================================= */
+
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: var(--header-height);
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 42px;
+
+  border-bottom: 1px solid var(--line);
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(5, 5, 5, 0.75),
+      rgba(5, 5, 5, 0.2)
+    );
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 230px;
+
+  color: inherit;
+}
+
+.brand-button {
+  appearance: none;
+
+  border: 0;
+  padding: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.brand-button:hover .brand-name {
+  color: #fff;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  background: rgba(255, 255, 255, 0.02);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.brand-button:hover .brand-mark {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.brand-name {
+  display: block;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 0.17em;
+
+  line-height: 1;
+}
+
+.brand-sub {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #666;
+
+  font-size: 7px;
+  line-height: 1;
+
+  letter-spacing: 0.22em;
+}
+
+/* =========================================================
+   MAIN NAV
+========================================================= */
+
+.nav {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(22px, 3vw, 42px);
+}
+
+.nav-item {
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #666;
+
+  cursor: pointer;
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.16em;
+
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.nav-item:hover {
+  color: #d7d7d7;
+}
+
+.nav-item.active {
+  color: #fff;
+}
+
+.nav-item.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 1px;
+
+  background: #fff;
+}
+
+/* =========================================================
+   INFO BUTTON
+========================================================= */
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  padding: 0;
+
+  border: 1px solid var(--line);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #bbb;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.icon-button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: rgba(255, 255, 255, 0.3);
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: absolute;
+
+  inset: var(--header-height) 0 var(--footer-height) 0;
+
+  z-index: 1;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   HERO COPY
+========================================================= */
+
+.hero-copy {
+  position: absolute;
+
+  top: 50%;
+  left: 7vw;
+
+  width: min(530px, 40vw);
+
+  z-index: 30;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+.hero-copy > * {
+  pointer-events: auto;
+}
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  color: #777;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.24em;
+
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: #eee;
+
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.7),
+    0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-copy h1 {
+  margin: 20px 0 18px;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(62px, 7.5vw, 118px);
+
+  font-weight: 500;
+
+  line-height: 0.82;
+
+  letter-spacing: -0.075em;
+
+  color: #f4f4f4;
+
+  text-transform: uppercase;
+}
+
+.hero-copy h1 span {
+  display: block;
+
+  color: #666;
+
+  font-weight: 400;
+}
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.hero-copy p {
+  max-width: 450px;
+
+  margin: 0;
+
+  color: #858585;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   HERO ACTIONS
+========================================================= */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 27px;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 0 17px;
+
+  border-radius: 0;
+
+  cursor: pointer;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  transition:
+    transform 0.2s var(--ease),
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.primary-button {
+  border: 1px solid #fff;
+
+  background: #fff;
+
+  color: #050505;
+}
+
+.primary-button:hover {
+  background: #e8e8e8;
+
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  border: 1px solid var(--line-strong);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #bdbdbd;
+
+  backdrop-filter: blur(10px);
+}
+
+.secondary-button:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #fff;
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 38px;
+
+  margin-top: 34px;
+}
+
+.stat-button {
+  display: grid;
+
+  gap: 5px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.stat-button strong {
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  letter-spacing: -0.02em;
+
+  color: #ddd;
+
+  transition: color 0.2s ease;
+}
+
+.stat-button span {
+  color: #555;
+
+  font-size: 7px;
+  font-weight: 500;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  transition: color 0.2s ease;
+}
+
+.stat-button:hover strong {
+  color: #fff;
+}
+
+.stat-button:hover span {
+  color: #999;
+}
+
+/* =========================================================
+   3D SCENE
+========================================================= */
+
+.scene-shell {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 5;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+}
+
+.car-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+}
+
+.car-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block;
+}
+
+/* =========================================================
+   SCENE HUD
+========================================================= */
+
+.scene-hud {
+  position: absolute;
+
+  top: 28px;
+  right: 34px;
+
+  z-index: 15;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 30px;
+
+  pointer-events: none;
+}
+
+.scene-hud > div {
+  display: grid;
+
+  gap: 5px;
+
+  text-align: right;
+}
+
+.scene-hud span {
+  color: #555;
+
+  font-size: 7px;
+  font-weight: 500;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.scene-hud strong {
+  color: #aaa;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   SCENE CONTROLS
+========================================================= */
+
+.scene-controls {
+  position: absolute;
+
+  left: 50%;
+  bottom: 86px;
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  transform: translateX(-50%);
+}
+
+.scene-controls > button {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid var(--line);
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  color: #aaa;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.scene-controls > button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.scene-controls .view-label {
+  width: auto;
+  min-width: 150px;
+
+  height: auto;
+
+  display: grid;
+
+  gap: 4px;
+
+  border-radius: 0;
+
+  background: transparent;
+
+  border: 0;
+
+  text-align: center;
+}
+
+.scene-controls .view-label:hover {
+  background: transparent;
+
+  border-color: transparent;
+}
+
+.view-label span {
+  color: #555;
+
+  font-size: 7px;
+
+  letter-spacing: 0.18em;
+}
+
+.view-label strong {
+  color: #aaa;
+
+  font-size: 9px;
+
+  letter-spacing: 0.14em;
+}
+
+/* =========================================================
+   CAMERA DOCK
+========================================================= */
+
+.camera-dock {
+  position: absolute;
+
+  left: 50%;
+  bottom: 25px;
+
+  z-index: 21;
+
+  display: flex;
+  align-items: center;
+
+  gap: 2px;
+
+  max-width: calc(100% - 40px);
+
+  padding: 4px;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  background: rgba(5, 5, 5, 0.72);
+
+  transform: translateX(-50%);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.camera-dock::-webkit-scrollbar {
+  display: none;
+}
+
+.camera-dock button {
+  min-width: 68px;
+  height: 32px;
+
+  flex: 0 0 auto;
+
+  padding: 0 12px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #666;
+
+  cursor: pointer;
+
+  font-size: 7px;
+  font-weight: 500;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.camera-dock button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   SCENE TOOLBAR
+========================================================= */
+
+.scene-toolbar {
+  position: absolute;
+
+  right: 28px;
+  bottom: 105px;
+
+  z-index: 22;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(7, 7, 7, 0.76);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.scene-toolbar button {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: transparent;
+
+  color: #666;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.scene-toolbar button:last-child {
+  border-bottom: 0;
+}
+
+.scene-toolbar button:hover,
+.scene-toolbar button.tool-active {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-button {
+  position: absolute;
+
+  top: 28px;
+  left: 28px;
+
+  z-index: 22;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  min-height: 34px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--line);
+
+  background: rgba(5, 5, 5, 0.55);
+
+  color: #999;
+
+  cursor: pointer;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.back-button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   SCENE HINT
+========================================================= */
+
+.scene-hint {
+  position: absolute;
+
+  left: 50%;
+  bottom: 9px;
+
+  z-index: 18;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  transform: translateX(-50%);
+
+  color: #454545;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+.hint-divider {
+  width: 24px;
+  height: 1px;
+
+  background: #292929;
+}
+
+/* =========================================================
+   CORNER LABELS
+========================================================= */
+
+.corner-label {
+  position: absolute;
+
+  z-index: 12;
+
+  color: #3f3f3f;
+
+  font-size: 7px;
+
+  letter-spacing: 0.17em;
+
+  pointer-events: none;
+}
+
+.corner-label.top-left {
+  top: 30px;
+  left: 28px;
+}
+
+.corner-label.bottom-right {
+  right: 30px;
+  bottom: 28px;
+}
+
+/* =========================================================
+   INFO PANEL
+========================================================= */
+
+.info-panel {
+  position: absolute;
+
+  top: 50%;
+  right: 34px;
+
+  z-index: 80;
+
+  width: min(370px, 31vw);
+
+  max-height: calc(100% - 60px);
+
+  padding: 28px;
+
+  overflow-y: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(17, 17, 17, 0.97),
+      rgba(6, 6, 6, 0.97)
+    );
+
+  box-shadow:
+    -30px 0 80px rgba(0, 0, 0, 0.45);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  transform: translate(120%, -50%);
+
+  transition: transform 0.55s var(--ease);
+
+  scrollbar-width: thin;
+  scrollbar-color: #444 transparent;
+}
+
+.info-panel.open {
+  transform: translate(0, -50%);
+}
+
+.info-panel::-webkit-scrollbar {
+  width: 3px;
+}
+
+.info-panel::-webkit-scrollbar-thumb {
+  background: #444;
+}
+
+.panel-close-icon {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid var(--line);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #aaa;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.panel-close-icon:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.panel-kicker {
+  padding-right: 42px;
+
+  color: #666;
+
+  font-size: 8px;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.info-panel h2 {
+  margin: 11px 0 12px;
+
+  color: #f3f3f3;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 28px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+}
+
+.info-panel p {
+  margin: 0;
+
+  color: #858585;
+
+  font-size: 10px;
+
+  line-height: 1.75;
+}
+
+/* =========================================================
+   PANEL STAT
+========================================================= */
+
+.panel-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin: 22px 0;
+
+  padding: 13px 0;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-stat span {
+  color: #555;
+
+  font-size: 7px;
+
+  letter-spacing: 0.16em;
+}
+
+.panel-stat strong {
+  color: #aaa;
+
+  font-size: 8px;
+
+  letter-spacing: 0.12em;
+
+  text-align: right;
+}
+
+/* =========================================================
+   PANEL GRID
+========================================================= */
+
+.panel-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 7px;
+}
+
+.panel-grid button {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 11px;
+
+  border: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #777;
+
+  cursor: pointer;
+
+  font-size: 7px;
+
+  text-align: left;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.panel-grid button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.close-panel {
+  width: 100%;
+
+  margin-top: 17px;
+
+  min-height: 40px;
+
+  border: 1px solid var(--line);
+
+  background: transparent;
+
+  color: #777;
+
+  cursor: pointer;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.close-panel:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* =========================================================
+   PERFORMANCE PANEL
+========================================================= */
+
+.performance-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 7px;
+
+  margin-top: 20px;
+}
+
+.performance-card {
+  min-height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 13px;
+
+  border: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.performance-card span {
+  color: #555;
+
+  font-size: 7px;
+
+  letter-spacing: 0.13em;
+}
+
+.performance-card strong {
+  color: #ddd;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
+
+.bottombar {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: var(--footer-height);
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 42px;
+
+  border-top: 1px solid var(--line);
+
+  background: rgba(5, 5, 5, 0.72);
+
+  backdrop-filter: blur(12px);
+}
+
+.footer-left,
+.footer-right,
+.footer-center {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.footer-left {
+  color: #777;
+
+  font-size: 7px;
+
+  letter-spacing: 0.16em;
+}
+
+.footer-right {
+  color: #777;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+}
+
+.footer-center {
+  color: #555;
+
+  font-size: 7px;
+
+  letter-spacing: 0.16em;
+}
+
+.footer-scroll-button {
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.footer-scroll-button:hover {
+  color: #fff;
+}
+
+.muted {
+  color: #3f3f3f;
+}
+
+.line {
+  width: 42px;
+  height: 1px;
+
+  background: #252525;
+}
+
+.scroll-wheel {
+  width: 7px;
+  height: 12px;
+
+  border: 1px solid #555;
+
+  border-radius: 6px;
+}
+
+/* =========================================================
+   CONFIGURATOR OVERLAY
+========================================================= */
+
+.configurator-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+  justify-content: flex-end;
+
+  pointer-events: none;
+}
+
+.configurator-overlay > * {
+  pointer-events: auto;
+}
+
+/* =========================================================
+   CONFIGURATOR BACKDROP
+========================================================= */
+
+.configurator-backdrop {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: rgba(0, 0, 0, 0.68);
+
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   CONFIGURATOR SHELL
+========================================================= */
+
+.configurator-shell {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(470px, 94vw);
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 18, 18, 0.99),
+      rgba(6, 6, 6, 0.99)
+    );
+
+  box-shadow:
+    -35px 0 100px rgba(0, 0, 0, 0.55);
+
+  animation: configurator-in 0.5s var(--ease);
+}
+
+@keyframes configurator-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   CONFIGURATOR TOP ACTIONS
+========================================================= */
+
+.configurator-top-actions {
+  min-height: 58px;
+
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 18px;
+
+  border-bottom: 1px solid var(--line);
+
+  color: #555;
+
+  font-size: 7px;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+.configurator-top-actions > span {
+  text-align: center;
+}
+
+.config-back-button,
+.config-close-button {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  min-height: 32px;
+
+  padding: 0 8px;
+
+  border: 1px solid var(--line);
+
+  background: transparent;
+
+  color: #888;
+
+  cursor: pointer;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+.config-close-button {
+  justify-self: end;
+
+  width: 34px;
+  height: 34px;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border-radius: 50%;
+}
+
+.config-back-button:hover,
+.config-close-button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* =========================================================
+   CONFIGURATOR
+========================================================= */
+
+.configurator {
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow-y: auto;
+
+  padding: 30px;
+
+  color: #fff;
+
+  scrollbar-width: thin;
+  scrollbar-color: #444 transparent;
+}
+
+.configurator::-webkit-scrollbar {
+  width: 4px;
+}
+
+.configurator::-webkit-scrollbar-thumb {
+  background: #444;
+}
+
+.configurator-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.config-kicker {
+  margin-bottom: 9px;
+
+  color: #666;
+
+  font-size: 8px;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+}
+
+.configurator h2 {
+  margin: 0;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 30px;
+
+  font-weight: 500;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.04em;
+}
+
+.configurator h2 span {
+  display: block;
+
+  color: #777;
+}
+
+.config-icon {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  border: 1px solid var(--line);
+
+  border-radius: 50%;
+
+  color: #999;
+}
+
+/* =========================================================
+   CONFIG SECTIONS
+========================================================= */
+
+.config-section {
+  padding: 21px 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.config-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 14px;
+}
+
+.config-title > div {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #bbb;
+
+  font-size: 9px;
+
+  letter-spacing: 0.14em;
+}
+
+.config-title small {
+  color: #666;
+
+  font-size: 8px;
+
+  letter-spacing: 0.08em;
+
+  text-align: right;
+}
+
+/* =========================================================
+   COLOR SWATCHES
+========================================================= */
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 11px;
+}
+
+.swatch {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 0 0 4px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.2s var(--ease),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.swatch:hover {
+  transform: scale(1.08);
+}
+
+.swatch.selected {
+  border-color: #fff;
+
+  box-shadow:
+    0 0 0 2px #fff,
+    inset 0 0 0 4px rgba(0, 0, 0, 0.16);
+}
+
+.swatch svg {
+  color: #fff;
+
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+}
+
+/* =========================================================
+   CONFIG OPTIONS
+========================================================= */
+
+.config-options {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 7px;
+}
+
+.config-option {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  width: 100%;
+
+  padding: 0 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #888;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.config-option:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.config-option.selected {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.option-dot {
+  width: 16px;
+  height: 16px;
+
+  flex: 0 0 auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 50%;
+}
+
+.config-option svg {
+  margin-left: auto;
+}
+
+/* =========================================================
+   CARBON TOGGLE
+========================================================= */
+
+.toggle {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 4px 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #777;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-size: 8px;
+
+  line-height: 1.4;
+
+  letter-spacing: 0.1em;
+}
+
+.toggle.active {
+  color: #fff;
+}
+
+.toggle-track {
+  width: 44px;
+  height: 24px;
+
+  display: block;
+
+  flex: 0 0 auto;
+
+  padding: 3px;
+
+  border-radius: 20px;
+
+  background: #292929;
+
+  transition: background 0.25s ease;
+}
+
+.toggle.active .toggle-track {
+  background: #eee;
+}
+
+.toggle-thumb {
+  display: block;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #777;
+
+  transition:
+    transform 0.25s var(--ease),
+    background 0.2s ease;
+}
+
+.toggle.active .toggle-thumb {
+  transform: translateX(20px);
+
+  background: #111;
+}
+
+/* =========================================================
+   CONFIG FOOTER
+========================================================= */
+
+.config-footer {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 8px;
+
+  padding-top: 24px;
+}
+
+.reset-button,
+.save-button {
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #999;
+
+  cursor: pointer;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.reset-button:hover {
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.save-button {
+  background: #eee;
+
+  color: #111;
+
+  border-color: #eee;
+}
+
+.save-button:hover {
+  background: #fff;
+
+  color: #000;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.scene-loading,
+.canvas-loading {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+
+  color: #777;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+.scene-loading {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 60;
+
+  gap: 12px;
+
+  background: #050505;
+}
+
+.loader-ring {
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-top-color: #fff;
+
+  border-radius: 50%;
+
+  animation: autohub-spin 0.8s linear infinite;
+}
+
+@keyframes autohub-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+.part-tooltip {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 9px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: rgba(5, 5, 5, 0.88);
+
+  color: #fff;
+
+  font-size: 8px;
+
+  letter-spacing: 0.12em;
+
+  white-space: nowrap;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 12px 50px rgba(0, 0, 0, 0.45);
+}
+
+.part-tooltip small {
+  color: #555;
+
+  font-size: 7px;
+}
+
+.tooltip-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+  :root {
+    --header-height: 72px;
+    --footer-height: 54px;
+  }
+
+  .topbar {
+    padding: 0 28px;
+  }
+
+  .nav {
+    gap: 22px;
+  }
+
+  .hero-copy {
+    left: 5vw;
+
+    width: min(500px, 43vw);
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(58px, 7.5vw, 95px);
+  }
+
+  .info-panel {
+    width: min(350px, 35vw);
+
+    right: 24px;
+  }
+
+  .scene-toolbar {
+    right: 20px;
+  }
+}
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 900px) {
+  :root {
+    --header-height: 68px;
+    --footer-height: 0px;
+  }
+
+  .autohub {
+    min-height: 100svh;
+    height: 100svh;
+  }
+
+  .topbar {
+    height: var(--header-height);
+
+    padding: 0 20px;
+  }
+
+  .brand {
+    min-width: auto;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 12px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .hero {
+    inset: var(--header-height) 0 0 0;
+  }
+
+  .hero-copy {
+    top: 48px;
+    left: 28px;
+
+    width: min(440px, 60vw);
+
+    transform: none;
+  }
+
+  .hero-copy h1 {
+    margin-top: 17px;
+
+    font-size: clamp(60px, 10vw, 90px);
+  }
+
+  .hero-copy p {
+    max-width: 390px;
+
+    font-size: 11px;
+  }
+
+  .hero-actions {
+    margin-top: 21px;
+  }
+
+  .stats {
+    margin-top: 24px;
+  }
+
+  .scene-hud {
+    top: 20px;
+    right: 20px;
+  }
+
+  .scene-toolbar {
+    right: 16px;
+    bottom: 105px;
+  }
+
+  .camera-dock {
+    bottom: 24px;
+
+    max-width: calc(100% - 30px);
+  }
+
+  .scene-controls {
+    bottom: 76px;
+  }
+
+  .info-panel {
+    width: min(360px, 42vw);
+
+    right: 18px;
+  }
+
+  .bottombar {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  :root {
+    --header-height: 60px;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+  }
+
+  .autohub {
+    width: 100vw;
+    height: 100svh;
+
+    min-height: 0;
+
+    overflow: hidden;
+  }
+
+  /* -------------------------
+     HEADER
+  ------------------------- */
+
+  .topbar {
+    height: 60px;
+
+    padding: 0 14px;
+
+    background: rgba(5, 5, 5, 0.84);
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+
+    font-size: 11px;
+  }
+
+  .brand-name {
+    font-size: 10px;
+
+    letter-spacing: 0.13em;
+  }
+
+  .icon-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* -------------------------
+     HERO
+  ------------------------- */
+
+  .hero {
+    inset: 60px 0 0 0;
+
+    overflow: hidden;
+  }
+
+  .hero-copy {
+    top: 27px;
+    left: 18px;
+    right: 18px;
+
+    width: auto;
+
+    z-index: 30;
+
+    transform: none;
+  }
+
+  .eyebrow {
+    font-size: 6px;
+
+    letter-spacing: 0.19em;
+  }
+
+  .status-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .hero-copy h1 {
+    margin: 15px 0 0;
+
+    font-size: clamp(51px, 15vw, 70px);
+
+    line-height: 0.82;
+  }
+
+  .hero-copy p {
+    display: block;
+
+    max-width: 330px;
+
+    margin-top: 15px;
+
+    color: #858585;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+  }
+
+  /* -------------------------
+     MOBILE BUTTONS
+  ------------------------- */
+
+  .hero-actions {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+
+    margin-top: 18px;
+
+    width: min(100%, 350px);
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+
+    min-height: 48px;
+
+    justify-content: center;
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
+  }
+
+  /* -------------------------
+     HIDE DESKTOP STATS
+  ------------------------- */
+
+  .stats {
+    display: none;
+  }
+
+  /* -------------------------
+     3D SCENE
+  ------------------------- */
+
+  .scene-shell {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .car-canvas {
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  /* -------------------------
+     HUD
+  ------------------------- */
+
+  .scene-hud {
+    display: none;
+  }
+
+  /* -------------------------
+     TOOLBAR
+  ------------------------- */
+
+  .scene-toolbar {
+    right: 12px;
+    bottom: 92px;
+
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .scene-toolbar button {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* -------------------------
+     CAMERA DOCK
+  ------------------------- */
+
+  .camera-dock {
+    left: 50%;
+    bottom: 17px;
+
+    width: calc(100% - 28px);
+
+    max-width: none;
+
+    justify-content: flex-start;
+
+    padding: 4px;
+
+    border-radius: 0;
+
+    overflow-x: auto;
+  }
+
+  .camera-dock button {
+    min-width: 58px;
+
+    height: 32px;
+
+    padding: 0 8px;
+
+    font-size: 6px;
+  }
+
+  /* -------------------------
+     SCENE CONTROLS
+  ------------------------- */
+
+  .scene-controls {
+    left: 50%;
+    bottom: 61px;
+
+    gap: 7px;
+  }
+
+  .scene-controls > button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .scene-controls .view-label {
+    min-width: 105px;
+  }
+
+  .view-label span {
+    font-size: 6px;
+  }
+
+  .view-label strong {
+    font-size: 7px;
+  }
+
+  /* -------------------------
+     HINT
+  ------------------------- */
+
+  .scene-hint {
+    display: none;
+  }
+
+  /* -------------------------
+     CORNER LABELS
+  ------------------------- */
+
+  .corner-label {
+    display: none;
+  }
+
+  /* -------------------------
+     BACK BUTTON
+  ------------------------- */
+
+  .back-button {
+    top: 15px;
+    left: 14px;
+
+    min-height: 30px;
+
+    padding: 0 9px;
+
+    font-size: 6px;
+  }
+
+  /* =====================================================
+     INFO PANEL = MOBILE BOTTOM SHEET
+  ===================================================== */
+
+  .info-panel {
+    position: fixed;
+
+    top: auto;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    width: auto;
+
+    max-height: min(68svh, 560px);
+
+    padding: 22px;
+
+    overflow-y: auto;
+
+    transform: translateY(calc(100% + 30px));
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 2px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(17, 17, 17, 0.98),
+        rgba(5, 5, 5, 0.98)
+      );
+
+    box-shadow:
+      0 -25px 80px rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(25px);
+  }
+
+  .info-panel.open {
+    transform: translateY(0);
+  }
+
+  .panel-close-icon {
+    top: 13px;
+    right: 13px;
+
+    width: 32px;
+    height: 32px;
+  }
+
+  .panel-kicker {
+    padding-right: 38px;
+
+    font-size: 7px;
+  }
+
+  .info-panel h2 {
+    margin-top: 10px;
+
+    font-size: 25px;
+  }
+
+  .info-panel p {
+    font-size: 9px;
+
+    line-height: 1.7;
+  }
+
+  .panel-stat {
+    margin: 18px 0;
+  }
+
+  .panel-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .panel-grid button {
+    min-height: 48px;
+
+    font-size: 7px;
+  }
+
+  /* =====================================================
+     PERFORMANCE PANEL
+  ===================================================== */
+
+  .performance-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 6px;
+  }
+
+  .performance-card {
+    min-height: 64px;
+
+    padding: 11px;
+  }
+
+  /* =====================================================
+     CONFIGURATOR
+  ===================================================== */
+
+  .configurator-overlay {
+    align-items: flex-end;
+
+    justify-content: center;
+  }
+
+  .configurator-shell {
+    width: 100vw;
+    max-width: 100vw;
+
+    height: 94svh;
+
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+      0 -30px 100px rgba(0, 0, 0, 0.65);
+
+    animation: configurator-mobile-in 0.45s var(--ease);
+  }
+
+  @keyframes configurator-mobile-in {
+    from {
+      transform: translateY(100%);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .configurator-top-actions {
+    min-height: 52px;
+
+    padding: 0 13px;
+  }
+
+  .configurator {
+    padding: 22px 18px 30px;
+  }
+
+  .configurator-header {
+    margin-bottom: 20px;
+  }
+
+  .configurator h2 {
+    font-size: 27px;
+  }
+
+  .config-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .config-section {
+    padding: 18px 0;
+  }
+
+  .config-title {
+    margin-bottom: 13px;
+  }
+
+  .config-options {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .config-option {
+    min-height: 50px;
+
+    padding: 0 11px;
+
+    font-size: 9px;
+  }
+
+  .swatch {
+    width: 40px;
+    height: 40px;
+  }
+
+  .config-footer {
+    padding-bottom: 20px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+  .hero-copy {
+    left: 14px;
+    right: 14px;
+  }
+
+  .hero-copy h1 {
+    font-size: 48px;
+  }
+
+  .hero-copy p {
+    font-size: 9px;
+
+    max-width: 290px;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .primary-button,
+  .secondary-button {
+    min-height: 44px;
+  }
+
+  .camera-dock {
+    width: calc(100% - 20px);
+  }
+
+  .camera-dock button {
+    min-width: 54px;
+
+    font-size: 5.5px;
+  }
+
+  .scene-toolbar {
+    right: 8px;
+    bottom: 91px;
+  }
+
+  .scene-toolbar button {
+    width: 33px;
+    height: 33px;
+  }
+
+  .info-panel {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+
+    padding: 18px;
+
+    max-height: 72svh;
+  }
+
+  .configurator {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero-copy {
+    top: 20px;
+    left: 22px;
+
+    width: 300px;
+  }
+
+  .hero-copy h1 {
+    margin-top: 10px;
+
+    font-size: 45px;
+  }
+
+  .hero-copy p {
+    display: none;
+  }
+
+  .hero-actions {
+    display: flex;
+
+    width: auto;
+
+    margin-top: 14px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: auto;
+
+    min-height: 38px;
+  }
+
+  .scene-toolbar {
+    bottom: 75px;
+  }
+
+  .camera-dock {
+    bottom: 10px;
+  }
+
+  .scene-controls {
+    bottom: 50px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}
